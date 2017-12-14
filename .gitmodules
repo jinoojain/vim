@@ -1,0 +1,15 @@
+[submodule "ctrlp.vim"]
+	path = ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim
+[submodule "vim-buffergator"]
+	path = vim-buffergator
+	url = https://github.com/jeetsukumaran/vim-buffergator
+[submodule "vim-commentary"]
+	path = vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "vim-expand-region"]
+	path = vim-expand-region
+	url = https://github.com/terryma/vim-expand-region
+[submodule "vim-surround"]
+	path = vim-surround
+	url = https://github.com/tpope/vim-surround
