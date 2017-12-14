@@ -33,16 +33,16 @@ map K <Plug>(expand_region_expand)
 " use nearest .git directory as the cwd 
 let g:ctrlp_working_path_mode = 'r'
 " shortcut to open CtrlP
-nmap <leader>f :CtrlP<CR>
+nmap <leader>f :CtrlP<cr>
 " set up some default ignores
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](\.(git|hg|svn)|\_site)$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
 " easy bindings for various modes
-nmap <leader>bb :CtrlPBuffer<CR>
-nmap <leader>bm :CtrlPMixed<CR>
-nmap <leader>bs <CtrlPMRU<CR>
+nmap <leader>bb :CtrlPBuffer<cr>
+nmap <leader>bm :CtrlPMixed<cr>
+nmap <leader>bs <CtrlPMRU<cr>
 
 " Buffergator settings -------------------------
 " use the right side of the screen
@@ -50,15 +50,15 @@ let g:buffergator_viewport_split_policy = 'R'
 " enable custom keymappings
 let g:buffergator_suppress_keymaps = 1
 " go to previous buffer open 
-nmap <leader>tt :BuffergatorMruCyclePrev<CR>
+nmap <leader>tt :BuffergatorMruCyclePrev<cr>
 " go to next buffer open
-nmap <leader>yy :BuffergatorMruCycleNext<CR>
+nmap <leader>yy :BuffergatorMruCycleNext<cr>
 " view the entire list of buffers open
-nmap <leader>bl :BuffergatorOpen<CR>
+nmap <leader>bl :BuffergatorOpen<cr>
 " open a new empty buffer
-nmap <leader>T :enew<CR>
+nmap <leader>T :enew<cr>
 " close current buffer and move to previous one 
-nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>bq :bp <BAR> bd #<cr>
 
 " -----------------------------------------------
 " All Plugins must be added before the following line
@@ -98,22 +98,22 @@ set smartcase        " case sensitive searching if not all lower
 let mapleader=" "
 
 " <leader>-<space> clears highlights
-map <leader><space> :nohlsearch<CR>
+map <leader><space> :nohlsearch<cr>
 
 " <leader>-v opens $MYVIMRC
-nmap <leader>v :split $MYVIMRC<CR> 
+nmap <leader>v :split $MYVIMRC<cr> 
 
 " <leader>-r reload vimrc
-nmap <leader>r :source $MYVIMRC<CR>
+nmap <leader>r :source $MYVIMRC<cr>
 
 " <leader>-p install plugins
-nmap <leader>p :PluginInstall<CR>
+nmap <leader>p :PluginInstall<cr>
 
 " View a diff between saved and unsaved versions
 command! Diff execute 'w !git diff --no-index % -'
 
 " window changing shortcuts--------------------
-" shortcuts to move (or open) new windows using hjkl
+" function that handles window management
 function! WinMove(key)
   let t:curwin = winnr()
   exec "wincmd ".a:key
@@ -126,20 +126,27 @@ function! WinMove(key)
     exec "wincmd ".a:key
   endif
 endfunction
-map <leader>h :call WinMove('h')<CR>
-map <leader>k :call WinMove('k')<CR>
-map <leader>l :call WinMove('l')<CR>
-map <leader>j :call WinMove('j')<CR>
-" wc = window close
-map <leader>wc :wincmd q<CR>
-" wr = windows rotate
+
+" shortcuts to move (or open) new windows using hjkl
+map <leader>h :call WinMove('h')<cr>
+map <leader>k :call WinMove('k')<cr>
+map <leader>l :call WinMove('l')<cr>
+map <leader>j :call WinMove('j')<cr>
+
+" <leader>wc = window close
+map <leader>wc :wincmd q<cr>
+
+" <leader>wr = windows rotate
 map <leader>wr <C-W>r
-" shortcuts to move windows
-map <leader>H :wincmd H<CR>
-map <leader>K :wincmd K<CR>
-map <leader>L :wincmd L<CR>
-map <leader>J :wincmd J<CR>
-" shortcuts to resize windows
+
+" shortcuts to move windows around
+" hard to describe - just play around with it :) 
+map <leader>H :wincmd H<cr>
+map <leader>K :wincmd K<cr>
+map <leader>L :wincmd L<cr>
+map <leader>J :wincmd J<cr>
+
+" remaps arrow keys as shortcuts to resize windows
 nmap <left> :3wincmd <<cr>
 nmap <right> :3wincmd ><cr>
 nmap <up> :3wincmd +<cr>
