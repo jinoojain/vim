@@ -17,13 +17,26 @@ Plugin 'vim-airline/vim-airline'        " custom status bar
 Plugin 'tpope/vim-fugitive'             " git wrapper
 Plugin 'tpope/vim-commentary'           " easy commenting
 Plugin 'tpope/vim-surround'             " easy surround
+Plugin 'tpope/vim-unimpaired'           " shortcuts for pairs
 Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finder
-Plugin 'vim-syntastic/syntastic'        " syntax checking
 Plugin 'terryma/vim-expand-region'      " visual select expander
 Plugin 'jeetsukumaran/vim-buffergator'  " buffer management
+Plugin 'vim-syntastic/syntastic'        " syntax/style checker
 
-" Syntastic JavaScript checker ----------------
-let g:syntastic_javascript_checkers = ['eslint']
+" Syntastic settings --------------------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" line below uses local .eslint not global installation
+let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" <leader>q now runs eslint and populates a loc list
+nmap <leader>q :SyntasticCheck eslint<cr>
 
 " Custom mapping for vim-expand-region ---------
 map J <Plug>(expand_region_shrink)
@@ -111,6 +124,9 @@ nmap <leader>p :PluginInstall<cr>
 
 " View a diff between saved and unsaved versions
 command! Diff execute 'w !git diff --no-index % -'
+
+" lists all TODOs and FIXMEs 
+command! Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
 
 " window changing shortcuts--------------------
 " function that handles window management
